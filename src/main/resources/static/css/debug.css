@@ -1,0 +1,21 @@
+/* 디버그용 CSS - 요소들이 보이는지 확인 */
+.yt-main {
+    border: 2px solid red !important;
+    min-height: 500px !important;
+}
+
+.yt-sidebar {
+    border: 2px solid blue !important;
+    background: lightblue !important;
+}
+
+.main-content {
+    border: 2px solid green !important;
+    background: lightgreen !important;
+}
+
+.yt-card-item {
+    border: 2px solid orange !important;
+    background: lightyellow !important;
+    margin-bottom: 10px !important;
+}

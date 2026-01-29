@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpringBlog - 공동 블로그</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 상단 네비게이션 -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a th:href="@{/}">SpringBlog</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="검색어를 입력하세요...">
+                <button>🔍</button>
+            </div>
+            <div class="nav-actions">
+                <a th:href="@{/signup}" class="btn-signup">회원가입</a>
+                <a th:href="@{/login}" class="btn-login">로그인</a>
+                <div class="dropdown">
+                    <button class="btn-my">MY ▼</button>
+                    <div class="dropdown-content">
+                        <a th:href="@{/my/profile}">내 프로필</a>
+                        <a th:href="@{/my/posts}">내가 쓴 글</a>
+                        <a th:href="@{/logout}">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 메인 컨테이너 -->
+    <div class="yt-main">
+        <!-- 왼쪽 사이드바 (고정) -->
+        <aside class="yt-sidebar">
+            <!-- 공지사항 -->
+            <section class="yt-sidebar-section sidebar-section">
+                <h3>📢 Announcement</h3>
+                <ul class="announcement-list">
+                    <li th:each="announcement : ${announcements}" th:text="${announcement}"></li>
+                </ul>
+            </section>
+
+            <!-- 방명록 -->
+            <section class="yt-sidebar-section sidebar-section">
+                <h3>✍️ Comment Section</h3>
+                <div class="guestbook-preview">
+                    <p>방명록에 글을 남겨주세요!</p>
+                    <a th:href="@{/guestbook}" class="btn-guestbook">방명록 보기</a>
+                </div>
+            </section>
+
+            <!-- 태그 클라우드 -->
+            <section class="yt-sidebar-section sidebar-section">
+                <h3>🏷️ Tags</h3>
+                <div class="tag-cloud">
+                    <a th:each="tag : ${tags}"
+                       th:href="@{/posts?tag={name}(name=${tag.name})}"
+                       class="tag"
+                       th:classappend="${tag.count > 10} ? 'tag-large' : ''">
+                        <span th:text="${tag.name}"></span>
+                        <span class="tag-count" th:text="${tag.count}"></span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 통계 -->
+            <section class="yt-sidebar-section sidebar-section">
+                <h3>📊 Statistics</h3>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Today</span>
+                        <span class="stat-value">42</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Yesterday</span>
+                        <span class="stat-value">38</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total</span>
+                        <span class="stat-value">15,234</span>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="main-content">
+            <!-- 스티키 헤더 (스크롤 시 고정) -->
+            <div class="content-header">
+                <nav class="content-nav">
+                    <button class="nav-tab active" data-tab="all">전체글</button>
+                    <button class="nav-tab" data-tab="popular">인기글</button>
+                    <button class="nav-tab" data-tab="insight">Insight Day</button>
+                </nav>
+            </div>
+
+            <!-- 게시글 그리드 -->
+            <div class="yt-article-area posts-grid">
+                <article th:each="post : ${posts}" class="yt-card-item">
+                    <a th:href="@{/posts/{id}(id=${post.id})}" class="post-link">
+                        <div class="yt-card-thumb post-thumbnail">
+                            <img th:src="${post.thumbnail}" th:alt="${post.title}">
+                            <div class="post-overlay"></div>
+                        </div>
+                        <div class="post-content">
+                            <h2 class="yt-card-title post-title" th:text="${post.title}"></h2>
+                            <p class="post-excerpt" th:text="${post.excerpt}"></p>
+                            <div class="yt-card-meta post-meta">
+                                <span class="post-category" th:text="${post.category}"></span>
+                                <span class="post-date" th:text="${#temporals.format(post.date, 'yyyy.MM.dd')}"></span>
+                                <span class="post-comments">💬 <span th:text="${post.commentCount}"></span></span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>
