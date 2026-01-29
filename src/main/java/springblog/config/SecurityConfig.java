@@ -49,4 +49,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(); 
     }
+    // 로그인 기능 구현
 }
