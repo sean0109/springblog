@@ -1,31 +1,50 @@
 package springblog.controller;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import springblog.dto.MemberForm;
+import springblog.model.Member;
+import springblog.service.MemberService;
 
+@Slf4j
 @Controller
+@RequiredArgsConstructor
 public class MemberController {
 
+    private final MemberService memberService;
 
     @GetMapping("/members/new")
     public String signUpFrom(Model model) {
 
         model.addAttribute("memberForm", new MemberForm());
 
-        return "members/signupFrom";
+        return "members/signUpForm";
     }
 
-    @PostMapping("/signup")
-    public String signUp(@Valid MemberForm memberForm, BindingResult bindingResult, Model model) {
+    @PostMapping("/members/new")
+    public String signUp(@Valid MemberForm memberForm, BindingResult result, Model model) {
 
+        if (result.hasErrors()) {
+            log.info("result={}", result);
+            // 폼 다시 보여주면서 에러 출력
+            return "members/signUpForm";
+        }
 
+        Member member = Member.builder()
+                .loginId(memberForm.getLoginId())
+                .email(memberForm.getEmail())
+                .password(memberForm.getPassword())
+                .build();
 
-        return null;
+        memberService.join(member);
+
+        return "redirect:/";
     }
 
 

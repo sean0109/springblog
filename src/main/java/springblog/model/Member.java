@@ -1,6 +1,5 @@
 package springblog.model;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import springblog.model.code.Role;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,6 +22,9 @@ public class Member implements UserDetails {
     private String password;
 
     private Role role;  // 권한
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     // 계정 만료 여부
     private String accountNonExpired;
