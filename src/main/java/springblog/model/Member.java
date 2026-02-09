@@ -1,5 +1,6 @@
 package springblog.model;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,17 +21,16 @@ public class Member implements UserDetails {
     private String email;
     private String password;
 
-
     private Role role;  // 권한
 
     // 계정 만료 여부
-    private boolean accountNonExpired;
+    private String accountNonExpired;
     // 계정 잠금 여부
-    private boolean accountNonLocked;
+    private String accountNonLocked;
     // 비밀번호 만료 여부
-    private boolean credentialsNonExpired;
+    private String credentialsNonExpired;
     // 계정 사용 가능 여부
-    private boolean enabled;
+    private String enabled;
 
     @Builder
     public Member(String loginId, String email, String password) {
@@ -54,24 +54,25 @@ public class Member implements UserDetails {
     // 계정 만료 여부
     @Override
     public boolean isAccountNonExpired() {
-        return accountNonExpired;
+
+        return "Y".equals(accountNonExpired);
     }
 
     // 계정 잠금 여부
     @Override
     public boolean isAccountNonLocked() {
-        return accountNonLocked;
+        return "Y".equals(accountNonLocked);
     }
 
     // 패스워드 만료 여부
     @Override
     public boolean isCredentialsNonExpired() {
-        return credentialsNonExpired;
+        return "Y".equals(credentialsNonExpired);
     }
 
     // 계정 사용 가능 여부
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return "Y".equals(enabled);
     }
 }

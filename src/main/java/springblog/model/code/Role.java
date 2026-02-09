@@ -1,16 +1,9 @@
 package springblog.model.code;
 
+
 public enum Role {
-    ROLE_ADMIN("ADMIN"),
-    ROLE_USER("USER");
+    USER,   // 일반 사용자
+    ADMIN,  // 관리자
+    GUEST,  // 게스트
 
-    private final String role;
-
-    Role(String role){
-        this.role = role;
-    }
-
-    public String getRole() {
-        return role;
-    }
 }
