@@ -6,10 +6,10 @@
 }
 
 body {
-    font-family: 'Gowun Dodum', -apple-system, sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #111111;
+    font-family: 'Gowun Dodum', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #212529;
     background-color: #f8f9fa;
 }
 
@@ -20,262 +20,195 @@ a {
 
 /* 네비게이션 */
 .top-nav {
-    background-color: #fff;
-    border-bottom: 1px solid #e9e9e9;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #f1f3f5;
 }
 
 .nav-container {
-    max-width: 1600px;
+    max-width: 1376px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
-    height: 56px;
+    padding: 0;
+    height: 64px;
 }
 
 .logo a {
-    font-size: 18px;
+    font-size: 21px;
     font-weight: 700;
-    color: #111111;
-}
-
-.search-bar {
-    display: flex;
-    flex: 0 0 300px;
-    margin: 0 20px;
-}
-
-.search-bar input {
-    flex: 1;
-    padding: 6px 12px;
-    border: 1px solid #e9e9e9;
-    border-radius: 4px 0 0 4px;
-    font-size: 14px;
-}
-
-.search-bar button {
-    padding: 6px 12px;
-    background-color: #555555;
-    color: white;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
+    color: #212529;
+    letter-spacing: -0.5px;
 }
 
 .nav-actions {
     display: flex;
     gap: 8px;
+    align-items: center;
 }
 
-.btn-signup, .btn-login, .btn-my {
-    padding: 6px 14px;
-    font-size: 13px;
-    border-radius: 4px;
-    border: 1px solid #e9e9e9;
-    background: white;
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
     cursor: pointer;
+    color: #495057;
+    transition: background-color 0.125s ease-in 0s;
+}
+
+.icon-btn:hover {
+    background-color: #f1f3f5;
+}
+
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
 }
 
 .btn-login {
-    background-color: #555555;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 16px;
+    border: 1px solid #343a40;
+    background: #343a40;
     color: white;
+    cursor: pointer;
+    transition: all 0.125s ease-in 0s;
 }
 
-.btn-my {
-    background-color: #111111;
-    color: white;
-}
-
-.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background: white;
-    border: 1px solid #e9e9e9;
-    border-radius: 4px;
-    margin-top: 8px;
-    min-width: 140px;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 10px 14px;
-    font-size: 13px;
-    border-bottom: 1px solid #f5f5f5;
-}
-
-.dropdown-content a:hover {
-    background-color: #f5f5f5;
+.btn-login:hover {
+    background-color: #212529;
+    border-color: #212529;
 }
 
 /* 메인 컨테이너 */
 .yt-main {
-    max-width: 1600px;
+    max-width: 1376px;
     margin: 0 auto;
-    padding: 24px;
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 40px;
+    padding: 0;
 }
 
-/* 사이드바 */
+/* 사이드바 숨김 */
 .yt-sidebar {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.sidebar-section {
-    margin-bottom: 30px;
-}
-
-.sidebar-section h3 {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #111111;
-}
-
-.announcement-list {
-    list-style: none;
-}
-
-.announcement-list li {
-    padding: 8px 0;
-    font-size: 13px;
-    color: #555555;
-    border-bottom: 1px solid #f5f5f5;
-}
-
-.guestbook-preview p {
-    font-size: 13px;
-    color: #777777;
-    margin-bottom: 12px;
-}
-
-.btn-guestbook {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    background-color: #555555;
-    color: white;
-    border-radius: 4px;
-    font-size: 13px;
-    text-align: center;
-}
-
-.tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.tag {
-    display: inline-block;
-    padding: 4px 10px;
-    background-color: #f5f5f5;
-    border: 1px solid #e9e9e9;
-    border-radius: 12px;
-    font-size: 12px;
-}
-
-.tag:hover {
-    background-color: #555555;
-    color: white;
-}
-
-.stats {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.stat-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-    font-size: 12px;
-}
-
-.stat-value {
-    font-weight: 700;
+    display: none;
 }
 
 /* 메인 콘텐츠 */
 .main-content {
-    /* flex: 1; */
+    padding-top: 32px;
+    padding-bottom: 48px;
 }
 
 .content-header {
-    background-color: white;
-    border: 1px solid #e9e9e9;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 32px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .content-nav {
     display: flex;
-    width: 100%;
+    gap: 0;
 }
 
 .nav-tab {
-    flex: 1;
-    padding: 14px 20px;
+    padding: 12px 16px;
     background: transparent;
     border: none;
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
-    border-right: 1px solid #f5f5f5;
+    color: #868e96;
+    transition: color 0.125s ease-in 0s;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.nav-tab:last-child {
-    border-right: none;
+.nav-tab svg {
+    width: 20px;
+    height: 20px;
 }
 
 .nav-tab:hover {
-    background-color: #f5f5f5;
+    color: #495057;
 }
 
 .nav-tab.active {
-    background-color: #f5f5f5;
-    font-weight: 700;
+    color: #212529;
+    background-color: transparent;
 }
 
-/* 게시글 그리드 */
+.filter-options {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.period-select {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+}
+
+.more-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #495057;
+    transition: background-color 0.125s ease-in 0s;
+}
+
+.more-btn:hover {
+    background-color: #f1f3f5;
+}
+
+.more-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* 게시글 그리드 - Velog Style */
 .yt-article-area {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    row-gap: 32px;
 }
 
 .yt-card-item {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: transform 0.2s;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px 0px;
+    transition: box-shadow 0.2s ease-in 0s, transform 0.2s ease-in 0s;
+    cursor: pointer;
 }
 
 .yt-card-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-6px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px 0px;
 }
 
 .post-link {
@@ -285,8 +218,8 @@ a {
 .post-thumbnail {
     position: relative;
     width: 100%;
-    padding-top: 56.25%;
-    background-color: #e4e6eb;
+    padding-top: 55%;
+    background-color: #f8f9fa;
     overflow: hidden;
 }
 
@@ -297,56 +230,152 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.yt-card-item:hover .post-thumbnail img {
+    transform: scale(1.05);
+}
+
+.post-overlay {
+    display: none;
 }
 
 .post-content {
-    padding: 16px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .post-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
-    margin-bottom: 8px;
-    line-height: 1.4;
-    color: #111111;
+    margin-bottom: 2px;
+    line-height: 1.5;
+    color: #212529;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    min-height: 42px;
 }
 
 .post-excerpt {
     font-size: 13px;
-    color: #777777;
+    color: #495057;
     line-height: 1.5;
     margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 39px;
 }
 
-.post-meta {
+.post-date-text {
+    font-size: 12px;
+    color: #adb5bd;
+    margin-top: 8px;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px 12px;
+    border-top: 1px solid #f1f3f5;
+}
+
+.author-info {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.author-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-name {
     font-size: 12px;
-    color: #999999;
+    color: #495057;
+    font-weight: 400;
 }
 
-.post-category {
-    background-color: #555555;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 11px;
+.post-likes {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #868e96;
 }
 
-/* 반응형 */
-@media (max-width: 1199px) {
+.post-likes svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* 반응형 - Velog Style */
+@media (max-width: 1440px) {
+    .yt-article-area {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        row-gap: 28px;
+    }
+}
+
+@media (max-width: 1024px) {
     .yt-article-area {
         grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        row-gap: 24px;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .filter-options {
+        width: 100%;
+        justify-content: flex-end;
     }
 }
 
 @media (max-width: 768px) {
-    .yt-main {
-        grid-template-columns: 1fr;
+    .main-content {
+        padding-top: 24px;
     }
-    
+
+    .content-header {
+        margin-bottom: 24px;
+    }
+
+    .nav-tab {
+        font-size: 15px;
+        padding: 10px 12px;
+    }
+
+    .nav-tab svg {
+        display: none;
+    }
+
     .yt-article-area {
         grid-template-columns: 1fr;
+        gap: 16px;
+        row-gap: 24px;
+    }
+
+    .icon-btn {
+        width: 36px;
+        height: 36px;
     }
 }

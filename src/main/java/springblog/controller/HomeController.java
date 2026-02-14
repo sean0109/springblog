@@ -22,7 +22,9 @@ public class HomeController {
                         "thumbnail", "https://picsum.photos/seed/spring/400/250",
                         "category", "개발",
                         "date", LocalDate.of(2024, 1, 15),
-                        "commentCount", 12
+                        "commentCount", 12,
+                        "author", "김개발",
+                        "likes", 25
                 ),
                 Map.of(
                         "id", 2,
@@ -31,7 +33,9 @@ public class HomeController {
                         "thumbnail", "https://picsum.photos/seed/mybatis/400/250",
                         "category", "데이터베이스",
                         "date", LocalDate.of(2024, 1, 20),
-                        "commentCount", 8
+                        "commentCount", 8,
+                        "author", "이디비",
+                        "likes", 18
                 ),
                 Map.of(
                         "id", 3,
@@ -40,7 +44,9 @@ public class HomeController {
                         "thumbnail", "https://picsum.photos/seed/security/400/250",
                         "category", "보안",
                         "date", LocalDate.of(2024, 1, 25),
-                        "commentCount", 15
+                        "commentCount", 15,
+                        "author", "박보안",
+                        "likes", 42
                 ),
                 Map.of(
                         "id", 4,
@@ -49,7 +55,9 @@ public class HomeController {
                         "thumbnail", "https://picsum.photos/seed/oracle/400/250",
                         "category", "데이터베이스",
                         "date", LocalDate.of(2024, 1, 28),
-                        "commentCount", 5
+                        "commentCount", 5,
+                        "author", "최오라클",
+                        "likes", 13
                 ),
                 Map.of(
                         "id", 5,
@@ -58,7 +66,9 @@ public class HomeController {
                         "thumbnail", "https://picsum.photos/seed/thymeleaf/400/250",
                         "category", "프론트엔드",
                         "date", LocalDate.of(2024, 2, 1),
-                        "commentCount", 7
+                        "commentCount", 7,
+                        "author", "정프론트",
+                        "likes", 21
                 ),
                 Map.of(
                         "id", 6,
@@ -67,7 +77,9 @@ public class HomeController {
                         "thumbnail", "https://picsum.photos/seed/restapi/400/250",
                         "category", "API",
                         "date", LocalDate.of(2024, 2, 5),
-                        "commentCount", 10
+                        "commentCount", 10,
+                        "author", "강API",
+                        "likes", 36
                 )
         );
 

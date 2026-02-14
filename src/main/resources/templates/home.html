@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpringBlog - 공동 블로그</title>
+    <title>velog</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,91 +14,68 @@
     <nav class="top-nav">
         <div class="nav-container">
             <div class="logo">
-                <a th:href="@{/}">SpringBlog</a>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="검색어를 입력하세요...">
-                <button>🔍</button>
+                <a th:href="@{/}">DuDuBlog</a>
             </div>
             <div class="nav-actions">
-                <a th:href="@{/signup}" class="btn-signup">회원가입</a>
+                <button class="icon-btn" title="알림">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                </button>
+                <button class="icon-btn" title="검색">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
                 <a th:href="@{/login}" class="btn-login">로그인</a>
-                <div class="dropdown">
-                    <button class="btn-my">MY ▼</button>
-                    <div class="dropdown-content">
-                        <a th:href="@{/my/profile}">내 프로필</a>
-                        <a th:href="@{/my/posts}">내가 쓴 글</a>
-                        <a th:href="@{/logout}">로그아웃</a>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- 메인 컨테이너 -->
     <div class="yt-main">
-        <!-- 왼쪽 사이드바 (고정) -->
-        <aside class="yt-sidebar">
-            <!-- 공지사항 -->
-            <section class="yt-sidebar-section sidebar-section">
-                <h3>📢 Announcement</h3>
-                <ul class="announcement-list">
-                    <li th:each="announcement : ${announcements}" th:text="${announcement}"></li>
-                </ul>
-            </section>
-
-            <!-- 방명록 -->
-            <section class="yt-sidebar-section sidebar-section">
-                <h3>✍️ Comment Section</h3>
-                <div class="guestbook-preview">
-                    <p>방명록에 글을 남겨주세요!</p>
-                    <a th:href="@{/guestbook}" class="btn-guestbook">방명록 보기</a>
-                </div>
-            </section>
-
-            <!-- 태그 클라우드 -->
-            <section class="yt-sidebar-section sidebar-section">
-                <h3>🏷️ Tags</h3>
-                <div class="tag-cloud">
-                    <a th:each="tag : ${tags}"
-                       th:href="@{/posts?tag={name}(name=${tag.name})}"
-                       class="tag"
-                       th:classappend="${tag.count > 10} ? 'tag-large' : ''">
-                        <span th:text="${tag.name}"></span>
-                        <span class="tag-count" th:text="${tag.count}"></span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- 통계 -->
-            <section class="yt-sidebar-section sidebar-section">
-                <h3>📊 Statistics</h3>
-                <div class="stats">
-                    <div class="stat-item">
-                        <span class="stat-label">Today</span>
-                        <span class="stat-value">42</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Yesterday</span>
-                        <span class="stat-value">38</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Total</span>
-                        <span class="stat-value">15,234</span>
-                    </div>
-                </div>
-            </section>
-        </aside>
-
         <!-- 메인 콘텐츠 -->
         <main class="main-content">
             <!-- 스티키 헤더 (스크롤 시 고정) -->
             <div class="content-header">
                 <nav class="content-nav">
-                    <button class="nav-tab active" data-tab="all">전체글</button>
-                    <button class="nav-tab" data-tab="popular">인기글</button>
-                    <button class="nav-tab" data-tab="insight">Insight Day</button>
+                    <button class="nav-tab active" data-tab="trending">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                        트렌딩
+                    </button>
+                    <button class="nav-tab" data-tab="recent">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        추천
+                    </button>
+                    <button class="nav-tab" data-tab="latest">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        최신
+                    </button>
+                    <button class="nav-tab" data-tab="feed">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+                        </svg>
+                        피드
+                    </button>
                 </nav>
+                <div class="filter-options">
+                    <select class="period-select">
+                        <option value="week">이번 주</option>
+                        <option value="month">이번 달</option>
+                        <option value="year">올해</option>
+                    </select>
+                    <button class="more-btn">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6v.01M12 12v.01M12 18v.01"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <!-- 게시글 그리드 -->
@@ -106,19 +83,30 @@
                 <article th:each="post : ${posts}" class="yt-card-item">
                     <a th:href="@{/posts/{id}(id=${post.id})}" class="post-link">
                         <div class="yt-card-thumb post-thumbnail">
-                            <img th:src="${post.thumbnail}" th:alt="${post.title}">
-                            <div class="post-overlay"></div>
+                            <img th:src="${post.thumbnail != null ? post.thumbnail : 'https://via.placeholder.com/400x210'}"
+                                 th:alt="${post.title}">
                         </div>
                         <div class="post-content">
                             <h2 class="yt-card-title post-title" th:text="${post.title}"></h2>
                             <p class="post-excerpt" th:text="${post.excerpt}"></p>
-                            <div class="yt-card-meta post-meta">
-                                <span class="post-category" th:text="${post.category}"></span>
-                                <span class="post-date" th:text="${#temporals.format(post.date, 'yyyy.MM.dd')}"></span>
-                                <span class="post-comments">💬 <span th:text="${post.commentCount}"></span></span>
-                            </div>
+                            <div class="post-date-text"
+                                 th:text="${#temporals.format(post.date, 'yyyy년 M월 d일')} + ' · 0개의 댓글'"></div>
                         </div>
                     </a>
+                    <div class="post-footer">
+                        <div class="author-info">
+                            <img th:src="${post.author != null ? 'https://ui-avatars.com/api/?name=' + post.author + '&background=12b886&color=fff' : 'https://ui-avatars.com/api/?name=User&background=12b886&color=fff'}"
+                                 th:alt="${post.author}"
+                                 class="author-avatar">
+                            <span class="author-name" th:text="'by ' + ${post.author != null ? post.author : 'Anonymous'}"></span>
+                        </div>
+                        <div class="post-likes">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            <span th:text="${post.likes != null ? post.likes : 0}"></span>
+                        </div>
+                    </div>
                 </article>
             </div>
         </main>
