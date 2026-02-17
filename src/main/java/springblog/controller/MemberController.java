@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import springblog.dto.MemberForm;
+import springblog.exception.member.MemberDuplicateException;
+import springblog.exception.member.MemberException;
 import springblog.model.Member;
 import springblog.service.MemberService;
 
@@ -28,7 +30,7 @@ public class MemberController {
     }
 
     @PostMapping("/members/new")
-    public String signUp(@Valid MemberForm memberForm, BindingResult result, Model model) {
+    public String signUp(@Valid MemberForm form, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
             log.info("result={}", result);
@@ -36,13 +38,14 @@ public class MemberController {
             return "members/signUpForm";
         }
 
-        Member member = Member.builder()
-                .loginId(memberForm.getLoginId())
-                .email(memberForm.getEmail())
-                .password(memberForm.getPassword())
-                .build();
+        try {
+            memberService.join(form);
 
-        memberService.join(member);
+        } catch (MemberDuplicateException e){
+            log.error("{} : {}", e.getMessage(), e.getDuplicateData());
+            result.reject("duplicateMember", e.getMessage());
+            return "members/signUpForm";
+        }
 
         return "redirect:/";
     }

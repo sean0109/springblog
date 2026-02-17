@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import springblog.dto.MemberForm;
 import springblog.model.code.Role;
 
 import java.time.LocalDateTime;
@@ -36,10 +38,31 @@ public class Member implements UserDetails {
     private String enabled;
 
     @Builder
-    public Member(String loginId, String email, String password) {
+    public Member (String loginId, String email, String password, Role role,
+                   String accountNonExpired, String accountNonLocked, String credentialsNonExpired,
+                   String enabled) {
         this.loginId = loginId;
         this.email = email;
         this.password = password;
+        this.role = role;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
+    }
+
+    // 정적 팩토리 메서드 추가
+    public static Member createNewMember(MemberForm form, PasswordEncoder encoder) {
+        return Member.builder()
+                .loginId(form.getLoginId())
+                .email(form.getEmail())
+                .password(encoder.encode(form.getPassword()))
+                .role(Role.USER)
+                .accountNonExpired("Y")
+                .accountNonLocked("Y")
+                .credentialsNonExpired("Y")
+                .enabled("Y")
+                .build();
     }
 
     @Override

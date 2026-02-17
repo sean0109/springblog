@@ -26,10 +26,10 @@
             , #{email}
             , #{password}
             , #{role}
-            , 'Y'
-            , 'Y'
-            , 'Y'
-            , 'Y'
+            , #{accountNonExpired}
+            , #{accountNonLocked}
+            , #{credentialsNonExpired}
+            , #{enabled}
             , SYSTIMESTAMP
             , SYSTIMESTAMP
         )
